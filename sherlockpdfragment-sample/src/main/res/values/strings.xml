@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">sherlockpdfragment sample</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="empty">No Data</string>
+    <string name="name">New Saikai Bridge Park</string>
+    <string name="description">
+        The arch bridge across one of Japan\'s three stormiest currents in Hario Seto was opened in March, 2006.
+        It runs parallel to Saikaibashi Bridge, which was built in 1955, and you can enjoy the view of the two arch bridges.
+        The whirlpools of Seto and the cherry blossoms in the area are spectacular in the springtime.
+    </string>
+
+
+
+</resources>
