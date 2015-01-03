@@ -1,0 +1,75 @@
+task androidJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.source
+}
+
+task androidJavadocsJar(type: Jar) {
+    classifier = 'javadoc'
+    from androidJavadocs.destinationDir
+}
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.source
+}
+
+publishing {
+    publications {
+        mod(MavenPublication) {
+            artifact androidSourcesJar
+            artifact androidJavadocsJar
+
+            groupId GROUP
+            artifactId POM_ARTIFACT_ID
+            version VERSION_NAME
+            artifact source: file("${project.buildDir}/outputs/aar/${project.name}-release.aar")
+
+            pom {
+
+                // add whatever you want
+
+                withXml {
+
+                    // for dependencies and exclusions
+                    def dependenciesNode = asNode().appendNode('dependencies')
+                    configurations.compile.allDependencies.each { ModuleDependency dp ->
+                        def dependencyNode = dependenciesNode.appendNode('dependency')
+                        dependencyNode.appendNode('groupId', dp.group)
+                        dependencyNode.appendNode('artifactId', dp.name)
+                        dependencyNode.appendNode('version', dp.version)
+                        dependencyNode.appendNode('type', 'aar')
+                        dependencyNode.appendNode('scope', 'compile')
+
+                        // for exclusions
+                        if (dp.excludeRules.size() > 0) {
+                            def exclusions = dependencyNode.appendNode('exclusions')
+                            dp.excludeRules.each { ExcludeRule ex ->
+                                def exclusion = exclusions.appendNode('exclusion')
+                                exclusion.appendNode('groupId', ex.group)
+                                exclusion.appendNode('artifactId', ex.module)
+                            }
+                        }
+                    }
+                    asNode().appendNode('name',POM_NAME)
+                    asNode().appendNode('url',POM_URL)
+                    asNode().appendNode('description',POM_DESCRIPTION)
+
+                    def licensesNode = asNode().appendNode('licenses')
+                    def licenseNode = licensesNode.appendNode('license')
+                    licenseNode.appendNode('name', POM_LICENCE_NAME)
+                    licenseNode.appendNode('url', POM_LICENCE_URL)
+                    licenseNode.appendNode('distribution', POM_LICENCE_DIST)
+
+                    def scmNode = asNode().appendNode('scm')
+                    scmNode.appendNode('url', POM_SCM_URL)
+                    scmNode.appendNode('connection', POM_SCM_CONNECTION)
+
+                    def developersNode = asNode().appendNode('developers')
+                    def developerNode = developersNode.appendNode('developer')
+                    developerNode.appendNode('id', POM_DEVELOPER_ID)
+                    developerNode.appendNode('name', POM_DEVELOPER_NAME)
+                    developerNode.appendNode('email', POM_DEVELOPER_EMAIL)
+                }
+            }
+        }
+    }
+}

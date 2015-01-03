@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ProgressDialogFragmentShadow">
+        <item name="android:background">@drawable/progress_dialog_fragment_shadow</item>
+    </style>
+
+    <style name="ProgressDialogFragmentDialog">
+        <item name="android:background">@drawable/progress_dialog_fragment_dialog</item>
+        <item name="android:layout_width">@dimen/progress_dialog_fragment_dialog_width</item>
+        <item name="android:layout_height">@dimen/progress_dialog_fragment_dialog_height</item>
+        <item name="android:layout_marginTop">@dimen/progress_dialog_fragment_dialog_marginTop</item>
+    </style>
+
+    <style name="ProgressDialogFragmentText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/progress_dialog_fragment_dialog_text_paddingTop</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:text">@string/progress_text</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:textColor">@color/progress_dialog_fragment_text_color</item>
+    </style>
+
+</resources>
