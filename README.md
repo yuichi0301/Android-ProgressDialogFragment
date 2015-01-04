@@ -1,5 +1,8 @@
 Android-ProgressDialogFragment
 ==============================
+Sample
+------
+![Example image](https://raw.github.com/YuichiUchida/Android-ProgressDialogFragment/master/example.png)
 
 Usage
 -----
