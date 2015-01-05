@@ -26,3 +26,30 @@ public class SampleFragment extends SherlockProgressDialogFragment {
 ``` java
 setContentShown(false);
 ```
+
+Gradle
+------
+
+ProgressDialogFragment (support-v4):
+``` xml
+dependencies {
+    compile 'me.yuichi0301:pdfragment:1.1.+'
+}
+```
+
+ProgressDialogFragment (native):
+``` xml
+dependencies {
+    compile 'me.yuichi0301:pdfragment-native:1.1.+'
+}
+```
+
+SherlockProgressDialogFragment:
+``` xml
+dependencies {
+    compile 'com.android.support:support-v4:21.0.3'
+    compile('me.yuichi0301:sherlockpdfragment:1.1.+') {
+        exclude module: 'support-v4'
+    }
+}
+```

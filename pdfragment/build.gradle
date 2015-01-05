@@ -1,23 +1,4 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:0.6'
-        classpath 'com.android.tools.build:gradle:1.0.0'
-    }
-}
-
-apply plugin: 'com.jfrog.bintray'
-apply plugin: 'maven-publish'
 apply plugin: 'com.android.library'
-
-group = GROUP
-version = VERSION_NAME
-
-repositories{
-    mavenCentral()
-}
 
 android {
     compileSdkVersion 21
@@ -33,5 +14,4 @@ dependencies {
     compile 'com.android.support:support-v4:21.0.3'
 }
 
-apply from: '../gradle/publishing.gradle'
-apply from: '../gradle/bintray.gradle'
+apply from: '../gradle/maven_push.gradle'
